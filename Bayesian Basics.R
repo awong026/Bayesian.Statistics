@@ -1,3 +1,6 @@
+#Andrew Wong
+#Bayes HW
+#2/11/2018
 
 library(LearnBayes)
 library(lattice)
@@ -100,13 +103,13 @@ mtext("YNEW",side=2,line=2.75,font=2,cex=1.2)
 .194+.084 #.278. Might be different next time since sampling and I didn't set seed
 
 
-#2.5 Suppose you are interested in estimating the average total snowfall per year ?? (in inches) for a large city on the East Coast of the United States.
-#Assume individual yearly snow totals y1, ..., yn are collected from a population that is assumed to be normally distributed with mean ?? and known standard deviation ?? = 10 inches
+#2.5 Suppose you are interested in estimating the average total snowfall per year mu (in inches) for a large city on the East Coast of the United States.
+#Assume individual yearly snow totals y1, ..., yn are collected from a population that is assumed to be normally distributed with mean mu and known standard deviation sigma = 10 inches
 
 #a) Before collecting data, suppose you believe that the mean snowfall ?? can be the values 20, 30, 40, 50, 60, and 70 inches with the following probabilities:
 ##Table:
-#?? 20 30 40 50 60 70
-#g(??) .1 .15 .25 .25 .15 .1
+#mu 20 30 40 50 60 70
+#g(mu) .1 .15 .25 .25 .15 .1
 #Place the values of ?? in the vector mu and the associated prior probabilities in the vector prior
 
 mu <- c(20,30,40,50,60,70)
@@ -129,23 +132,23 @@ like
 
 #d) One can compute the posterior probabilities for ?? using the formula
 #post=prior*like/sum(prior*like)
-#Compute the posterior probabilities of ?? for this example
+#Compute the posterior probabilities of mu for this example
 post=prior*like/sum(prior*like)
 post
 
-#e) Using the function discint, find an 80% probability interval for ??
+#e) Using the function discint, find an 80% probability interval for mu
 print(cbind(mu,post))
 print(discint(cbind(mu,post),0.8))
 #Note: asnwer is 40 50 with p = 0.9999959. Any smaller interval yields p<0.8
 
 #2.6: Suppose you own a trucking company with a large fleet of trucks. Breakdowns occur randomly in time and the number of breakdowns during an
-# interval of t days is assumed to be Poisson distributed with mean t??. The parameter ?? is the daily breakdown rate. The possible values for ?? are
-#.5, 1, 1.5, 2, 2.5, and 3 with respective probabilities .1, .2, .3, .2, .15, and .05. If one observes y breakdowns, then the posterior probability of ?? is proportional to (in pdf)
+# interval of t days is assumed to be Poisson distributed with mean t??. The parameter lamada is the daily breakdown rate. The possible values for lamada are
+#.5, 1, 1.5, 2, 2.5, and 3 with respective probabilities .1, .2, .3, .2, .15, and .05. If one observes y breakdowns, then the posterior probability of lamada is proportional to (in pdf)
 #where g is the prior probability.
 
 #a) If 12 trucks break down in a six-day period, find the posterior probabilities for the different rate values.
-#b) Find the probability that there are no breakdowns during the next week. Hint: If the rate is ??, the conditional probability of no breakdowns
-#during a seven-day period is given by exp{???7??}. One can compute this predictive probability by multiplying a list of conditional
+#b) Find the probability that there are no breakdowns during the next week. Hint: If the rate is lamada, the conditional probability of no breakdowns
+#during a seven-day period is given by exp{-7lam}. One can compute this predictive probability by multiplying a list of conditional
 #probabilities by the posterior probabilities of ?? and finding the sum of the products.
 
 #a) 
